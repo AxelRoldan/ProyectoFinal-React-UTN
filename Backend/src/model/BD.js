@@ -7,16 +7,6 @@ function conectar() {
     });
 }
 
-function crearPersona(nombreDeLaPersona) {
-    const Persona = mongoose.model('animal', { name: String });
-
-    const nuevaPersona = new Persona({ name: nombreDeLaPersona });
-    nuevaPersona.save().then(() => console.log('meow'));
-
-    return nuevaPersona
-}
-
 export default {
-    conectar,
-    crearPersona
+    conectar
 }

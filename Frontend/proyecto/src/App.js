@@ -1,48 +1,20 @@
 import './App.css';
 import react from 'react';
+import Index from '../src/componentes/index'
+import Categoria from '../src/componentes/Categoria/Categoria'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 
 function App() {
 
-  fetch('http://localhost:8080/')
-    .then(e => e.json())
-    .then(e => console.log(e))
-  function consultaApi (e){
-    e.preventDefault()
-
-    let persona = {
-      nombre: document.getElementById("nombrePersona").value,
-      apellido: document.getElementById("apellidoPersona").value,
-      dni: document.getElementById("dniPersona").value
-    }
-
-    fetch('http://localhost:8080/api/agregarUsuario',{
-      method: "post",
-      body: JSON.stringify(persona)
-    })
-    .then(e => e.json())
-    .then(e => console.log(e))
-  }
-
   return (
-    <div className="App">
-      <h1>BIENVENIDO A REACT</h1>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<Index />} />
+        <Route path='/Categoria/:id' element={<Categoria />} />
+      </Routes>
+    </BrowserRouter>
 
-      <form action="post" onSubmit={consultaApi}>
-        <label>
-          Nombre
-        </label>
-        <input type="text" placeholder="ingrese su nombre" id="nombrePersona"></input>
-        <label>
-          Apellido
-        </label>
-        <input type="text" placeholder="ingrese su apellido" id="apellidoPersona"></input>
-        <label>
-          DNI
-        </label>
-        <input type="text" placeholder="ingrese su dni" id="dniPersona"></input>
-        <button type="submit" id="submit">Enviar</button>
-      </form>
-    </div>
   );
 }
 

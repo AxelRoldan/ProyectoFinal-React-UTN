@@ -1,13 +1,12 @@
 import baseDeDatos from '../model/BD.js'
+import modeloPersona from '../model/persona.js'
 
-const crearPersona = (req, res) => {
+const crearPersona = async (req, res) => {
 
     let nuevaPersona = req.body
 
-    let persona = baseDeDatos.crearPersona(nuevaPersona.nombre)
-
     res.json({
-        valor1: persona
+        valor1: await modeloPersona(nuevaPersona)
     })
 }
 

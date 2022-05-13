@@ -2,6 +2,7 @@ import express from "express";
 import cors from 'cors'
 import routerPersona from './route/persona.js'
 import baseDeDatos from './model/BD.js'
+import fetch from 'node-fetch'
 
 const app = express()
 const PORT = 8080
