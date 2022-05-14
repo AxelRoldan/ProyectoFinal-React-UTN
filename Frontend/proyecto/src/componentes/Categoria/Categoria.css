@@ -1,0 +1,9 @@
+.linea{
+    border: 2px solid red
+}
+
+.cajaSubMenu{
+    display: none;
+    background-color: aquamarine;
+    border: 2px solid darkblue;
+}
