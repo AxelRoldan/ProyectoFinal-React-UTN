@@ -21,25 +21,25 @@ export default function TraerCategorias() {
     const habilitarSubMenu = (e) => {
 
         document.getElementById("subCategoria").classList.remove("cajaSubMenu")
-        let valor = e.target.href.split("/")[Object.keys(e.target.href.split("/")).length - 1]
-        console.log(valor)
+        let idSubCategoria = e.target.parentNode.firstChild.textContent
 
-        fetch(`https://api.mercadolibre.com/categories/${valor}`)
+        fetch(`https://api.mercadolibre.com/categories/${idSubCategoria}`)
             .then(subCategorias => subCategorias.json())
             .then(subCategorias => setSubCategorias(subCategorias))
     }
 
     if (!categorias) return 0
-    if (subCategorias) console.log("VAN DATOS",subCategorias)
 
     return (
-        <Row className="flex-nowrap">
-            <Col className="linea">
+        <Row className="flex-nowrap" onMouseLeave={() => setSubCategorias(null)} >
+            <Col className="">
                 {categorias.map(categoria => {
-
                     return (
                         <>
-                            <NavDropdown.Item as={Link} to={`/Categoria/${categoria.id}`} onMouseOver={habilitarSubMenu} id="idCategoria">{categoria.name}</NavDropdown.Item>
+                            <div>
+                                <div className='esconder' id="idCategoria" >{categoria.id}</div>
+                                <NavDropdown.Item as={Link} to={`/Categoria/${categoria.id}`} onMouseOver={habilitarSubMenu}>{categoria.name}</NavDropdown.Item>
+                            </div>
                         </>
                     )
                 })}
@@ -48,10 +48,9 @@ export default function TraerCategorias() {
                 {
                     subCategorias &&
                     subCategorias.children_categories.map(categoria => {
-
                         return (
                             <>
-                                <NavDropdown.Item>{categoria.name}</NavDropdown.Item>
+                                <NavDropdown.Item as={Link} to={`/SubCategoria/Productos/${categoria.id}`}>{categoria.name}</NavDropdown.Item>
                             </>
                         )
                     })}

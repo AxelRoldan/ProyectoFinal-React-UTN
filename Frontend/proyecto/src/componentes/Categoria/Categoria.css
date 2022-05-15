@@ -1,9 +1,11 @@
 .linea{
-    border: 2px solid red
+    border: 2px solid black
 }
 
 .cajaSubMenu{
     display: none;
-    background-color: aquamarine;
-    border: 2px solid darkblue;
+}
+
+.esconder{
+    display: none;
 }

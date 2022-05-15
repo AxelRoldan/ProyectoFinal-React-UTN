@@ -1,0 +1,9 @@
+.caja{
+    width: 100%;
+}
+
+.formBuscador{
+    width: 100%;
+    min-width: 300px;
+    max-width: 600px;
+}

@@ -19,7 +19,7 @@ export default function Categoria() {
   return (
     <>
       <Navegacion />
-      
+      <h1>ACA VAN LAS CATEGORIAS</h1>
       <Footer />
     </>
   )
