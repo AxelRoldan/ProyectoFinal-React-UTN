@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import Navegacion from '../Navbar/Navbar'
 import Footer from '../Footer/Footer'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
+import { Container, Image, Row, Col } from 'react-bootstrap'
+import TraerCategorias from './TraerCategorias'
 
 export default function Categoria() {
 
@@ -11,15 +13,37 @@ export default function Categoria() {
   useEffect(() => {
     fetch(`https://api.mercadolibre.com/categories/${id}`)
       .then(categoriaElegida => categoriaElegida.json())
-      .then(categoriaElegida => setCategoria(categoriaElegida))
-  }, [setCategoria])
+      .then(categoriaElegida => {
+        console.log(categoriaElegida)
+        setCategoria(categoriaElegida)
+      })
+  }, [setCategoria, id])
 
-  if(!categoria) return "hola"
+  if (!categoria) return "hola"
 
   return (
     <>
       <Navegacion />
-      <h1>ACA VAN LAS CATEGORIAS</h1>
+      <Container>
+        <Row style={{ widht: "100%" }} className="productoCompleto">
+          <Col xs={{ span: 8, offset: 2 }} sm={{ span: 8, offset: 2 }} md={{ span: 6, offset: 3 }} xl={{ span: 6, offset: 0 }} className="cajaFoto d-flex flex-wrap align-items-center mt-5">
+            <Image src={categoria.picture} className="cajaFoto" thumbnail roundedCircle></Image>
+          </Col>
+          <Col xl={6} className="d-flex flex-wrap justify-content-center mt-5">
+            {
+              categoria.children_categories.map(categoriaHija => {
+                return (
+                  <>
+                    <Link to={`/SubCategoria/Productos/${categoriaHija.id}`} className="cajaSubCategorias d-flex align-items-center justify-content-center">
+                      <p style={{ textAlign: "center" }}>{categoriaHija.name.toUpperCase()}</p>
+                    </Link>
+                  </>
+                )
+              })
+            }
+          </Col>
+        </Row>
+      </Container>
       <Footer />
     </>
   )

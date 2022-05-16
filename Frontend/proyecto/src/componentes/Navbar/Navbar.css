@@ -1,5 +1,9 @@
-.linea{
+.deslizar {
 
   border: 2px solid white;
+  -webkit-transition: all 0.5s 0s ease;
+  -moz-transition: all 0.5s 0s ease;
+  -o-transition: all 0.5s 0s ease;
+  transition: all 0.5s 0s ease;
 
 }

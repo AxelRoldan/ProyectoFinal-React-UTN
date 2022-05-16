@@ -1,10 +1,8 @@
 import React from 'react'
-import { Container, Navbar, Nav, NavDropdown, Row, Col, NavLink } from 'react-bootstrap'
-import { Form } from 'react-bootstrap'
+import { Container, Navbar, Nav, NavDropdown } from 'react-bootstrap'
 import './Navbar.css'
 import TraerCategorias from '../Categoria/TraerCategorias'
 import BuscarProducto from '../Producto/BuscarProducto'
-import { Button } from 'react-bootstrap'
 
 const Navegacion = () => {
 
@@ -17,7 +15,7 @@ const Navegacion = () => {
                     <Nav className="me-auto" >
                         <Nav.Link href="#home">Home</Nav.Link>
                         <Nav.Link href="#link">Link</Nav.Link>
-                        <NavDropdown title="Dropdown" id="basic-nav-dropdown">
+                        <NavDropdown title="Dropdown" id="basic-nav-dropdown" className="deslizar">
                             <TraerCategorias />
                         </NavDropdown>
                     </Nav>
