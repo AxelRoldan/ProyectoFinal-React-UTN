@@ -1,9 +1,9 @@
 import './App.css';
-import react from 'react';
 import Index from '../src/componentes/index'
 import Categoria from '../src/componentes/Categoria/Categoria'
-import BuscarProducto from './componentes/Producto/Producto';
-import Productos from './componentes/Categoria/Productos';
+import ConsultaProducto from './componentes/Producto/ConsultaProducto';
+import SubCategoria from './componentes/Categoria/SubCategoria';
+import MostrarProducto from './componentes/Producto/MostrarProducto';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 
@@ -14,8 +14,9 @@ function App() {
       <Routes>
         <Route path='/' element={<Index />} />
         <Route path='/Categoria/:id' element={<Categoria />} />
-        <Route path='/SubCategoria/Productos/:id' element={<Productos />} />
-        <Route path='/BuscarProducto/:id' element={<BuscarProducto />} />
+        <Route path='/SubCategoria/Productos/:id' element={<SubCategoria />} />
+        <Route path='/BuscarProducto/:id' element={<ConsultaProducto />} />
+        <Route path='/Producto/:id' element={<MostrarProducto />} />
       </Routes>
     </BrowserRouter>
 
