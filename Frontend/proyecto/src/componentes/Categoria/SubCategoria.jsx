@@ -24,8 +24,8 @@ export default function Productos() {
   return (
     <>
       <Navegacion />
-      <Container style={{ maxWidth: "1050px", padding: "30px" }}>
-        <Row className="g-4 mt-5">
+      <Container id="containerMostrarProducto">
+        <Row className="g-4 pt-5 justify-content-center">
           {productosSubCategoria.results.map(producto => {
             return (
               <>

@@ -38,7 +38,7 @@ export default function TraerCategorias() {
                         <>
                             <div>
                                 <div className='esconder' id="idCategoria" >{categoria.id}</div>
-                                <NavDropdown.Item as={Link} to={`/Categoria/${categoria.id}`} onMouseOver={habilitarSubMenu}>{categoria.name}</NavDropdown.Item>
+                                <NavDropdown.Item as={Link} to={`/Categoria/${categoria.id}`} id="categoria" onMouseOver={habilitarSubMenu}>{categoria.name}</NavDropdown.Item>
                             </div>
                         </>
                     )
@@ -50,7 +50,7 @@ export default function TraerCategorias() {
                     subCategorias.children_categories.map(categoria => {
                         return (
                             <>
-                                <NavDropdown.Item as={Link} to={`/SubCategoria/Productos/${categoria.id}`}>{categoria.name}</NavDropdown.Item>
+                                <NavDropdown.Item as={Link} to={`/SubCategoria/Productos/${categoria.id}`} id="subCategoriaCelda">{categoria.name}</NavDropdown.Item>
                             </>
                         )
                     })}

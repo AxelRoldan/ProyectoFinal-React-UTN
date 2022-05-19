@@ -1,5 +1,38 @@
-.caja {
-    width: 100%;
+body {
+    margin: 0;
+    font-family: 'Quicksand', sans-serif;
+}
+
+#boton {
+    width: 40px;
+    border-radius: 40px;
+    height: 40px;
+    background-color: #FBF8F1;
+    border: none;
+}
+
+#columnaBuscador{
+    height: 40px;
+    width: 80px;
+}
+
+#buscador{
+    border-radius: 40px;
+    height: 40px;
+    min-width: 100px;
+}
+
+#buscador:hover{
+    background-color: #FBF8F1;
+}
+
+#buscador:focus{
+    border: none;
+    box-shadow: none;
+}
+
+#lupa {
+    height: 20px;
 }
 
 .formBuscador {
@@ -14,7 +47,8 @@
     height: auto;
     max-height: 48px;
 }
-#cajaImagenProducto{
+
+#cajaImagenProducto {
     height: 50px;
     width: 50px;
     max-width: 50px;
@@ -23,26 +57,32 @@
     border: 1px solid #C3C0C0;
 }
 
-#imagenProductoPrincipal{
+#imagenProductoPrincipal {
     margin: 20px;
     height: auto;
     max-height: 350px;
+    min-height: 350px;
     width: auto;
-    max-width: 500px;
+    max-width: 400px;
+    min-width: auto;
 }
 
-#producto {
+.producto {
     height: 100%;
     width: 100%;
-    margin-top: 80px;
+    margin-top: 800px;
+    margin-bottom: 10px;
     max-width: 80%;
     background-color: white;
     border: 1.5px solid #C3C0C0;
     border-radius: 2px;
+    overflow: hidden;
 }
 
 #columnaFotos {
-    padding-top: 10px;
+    margin-top: 25px;
+    max-height: 510px;
+    overflow: hidden
 }
 
 #cajaImagenProducto:hover {
@@ -50,12 +90,80 @@
 }
 
 #columnaDescripcion {
-    height: 400px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    margin-right: 0px;
-    border: 0.5px solid #C3C0C0;
+    height: 480px;
+    margin-top: 30px;
+    border-left: 0.5px solid #C3C0C0;
+    border-top: 0.5px solid #C3C0C0;
+    border-bottom: 0.5px solid #C3C0C0;
     border-radius: 10px 0px 0px 10px;
-    -webkit-box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.2);
-    box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+#carouselFotos {
+    height: auto;
+    max-height: 350px;
+    width: auto;
+    padding: 20px;
+    margin: auto;
+}
+
+#carouselCuerpo {
+    visibility: hidden;
+    display: none;
+}
+
+.nombreCaracteristicas {
+
+    border: .5px solid  #C3C0C0;
+    background-color: #e8e8e8;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 3px;
+    border-radius: 3px;
+    font-weight: bold;
+}
+
+.valorCaracteristicas {
+
+    border: .5px solid  #C3C0C0;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 3px;
+    border-radius: 3px;
+    text-align: center;
+    font-size: medium;
+}
+
+#containerMostrarProducto {
+
+    background-color: white;
+    max-width: 1100px;
+    height: 100%;
+    border-left: 1px solid #C3C0C0;
+    border-right: 1px solid #C3C0C0;
+    box-shadow: -4px 0px 6px -1px rgba(195, 192, 192, 0.95), 4px 0px 6px -1px rgba(195, 192, 192, 0.95);
+    -webkit-box-shadow: -4px 0px 6px -1px rgba(195, 192, 192, 0.95), 4px 0px 6px -1px rgba(195, 192, 192, 0.95);
+    -moz-box-shadow: -4px 0px 6px -1px rgba(195, 192, 192, 0.95), 4px 0px 6px -1px rgba(195, 192, 192, 0.95);
+}
+
+
+@media (max-width: 768px) {
+
+    #carouselCuerpo {
+        visibility: visible;
+        display: contents;
+        width: auto;
+    }
+
+    #columnaFotos {
+        visibility: hidden;
+        display: none;
+        height: 0px;
+    }
+
+    #imagenColumnaPrincipal {
+        visibility: hidden;
+        display: none;
+        height: 0px;
+    }
+
 }

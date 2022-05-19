@@ -1,5 +1,6 @@
 import React from 'react'
-import { Container, Navbar, Nav, NavDropdown } from 'react-bootstrap'
+import { Container, Navbar, Nav, NavDropdown, Image } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 import './Navbar.css'
 import TraerCategorias from '../Categoria/TraerCategorias'
 import BuscarProducto from '../Producto/BuscarProducto'
@@ -7,15 +8,15 @@ import BuscarProducto from '../Producto/BuscarProducto'
 const Navegacion = () => {
 
     return (
-        <Navbar bg="light" expand="lg">
-            <Container className="">
-                <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+        <Navbar expand="lg" id="navbar" >
+            <Container className="" >
+                <Navbar.Brand as={Link} to={"/"}><Image src={"https://i.ibb.co/6ZbL9t9/Fake.png"} rounded id="imagenLogo"></Image></Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav" >
                     <Nav className="me-auto" >
-                        <Nav.Link href="#home">Home</Nav.Link>
-                        <Nav.Link href="#link">Link</Nav.Link>
-                        <NavDropdown title="Dropdown" id="basic-nav-dropdown" className="deslizar">
+                        <Nav.Link as={Link} to={"/"}>Home</Nav.Link>
+                        <Nav.Link as={Link} to={"/"}>Mi Carrito</Nav.Link>
+                        <NavDropdown title="Categorias" id="basic-nav-dropdown">
                             <TraerCategorias />
                         </NavDropdown>
                     </Nav>

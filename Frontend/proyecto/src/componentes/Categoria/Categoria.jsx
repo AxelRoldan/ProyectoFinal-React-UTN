@@ -24,10 +24,12 @@ export default function Categoria() {
   return (
     <>
       <Navegacion />
-      <Container>
+      <Container id="containerMostrarProducto">
         <Row style={{ widht: "100%" }} className="productoCompleto">
-          <Col xs={{ span: 8, offset: 2 }} sm={{ span: 8, offset: 2 }} md={{ span: 6, offset: 3 }} xl={{ span: 6, offset: 0 }} className="cajaFoto d-flex flex-wrap align-items-center mt-5">
-            <Image src={categoria.picture} className="cajaFoto" thumbnail roundedCircle></Image>
+          <Col xs={{ span: 8, offset: 2 }} sm={{ span: 8, offset: 2 }} md={{ span: 6, offset: 3 }} xl={{ span: 6, offset: 0 }} className="cajaFoto d-flex flex-column align-items-center mt-5 justify-content-evenly">
+            <h1 style={{ textAlign:"center" }}>{categoria.name.toUpperCase()}</h1>
+            <Image src={categoria.picture} rounded></Image>
+            <h1 style={{ textAlign:"center" }} >{categoria.name.toUpperCase()}</h1>
           </Col>
           <Col xl={6} className="d-flex flex-wrap justify-content-center mt-5">
             {
@@ -35,7 +37,7 @@ export default function Categoria() {
                 return (
                   <>
                     <Link to={`/SubCategoria/Productos/${categoriaHija.id}`} className="cajaSubCategorias d-flex align-items-center justify-content-center">
-                      <p style={{ textAlign: "center" }}>{categoriaHija.name.toUpperCase()}</p>
+                      <p style={{ textAlign: "center" }} id="tituloSubCategoria">{categoriaHija.name.toUpperCase()}</p>
                     </Link>
                   </>
                 )
