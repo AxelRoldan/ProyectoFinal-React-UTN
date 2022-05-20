@@ -18,6 +18,30 @@
     border: 1px solid #F7ECDE;
 }
 
+.llegaGratisMañana {
+
+    background-color: #FBF8F1;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    padding: 10px;
+    margin-left: 20%;
+    margin-bottom: 12px;
+    font-size: 12px;
+    height: 20px;
+    border: 1px solid #F7ECDE;
+    display: flex;
+    align-items: center;
+}
+
+#columnaTarjeta {
+    height: 100%;
+}
+
+.fotoProducto {
+    height: 150px;
+}
+
 #containerMostrarProducto {
 
     max-width: 1100px;
@@ -69,23 +93,58 @@
 }
 
 #cajaProducto {
-    width: 80%;
-    -webkit-box-shadow: 0px 0px 8px 0px #8A8282;
-    -moz-box-shadow: 0px 0px 8px 0px #8A8282;
-    box-shadow: 0px 0px 8px 0px #8A8282;
+    text-decoration: none;
+    width: 70%;
     border: 0.5px solid #8A8282;
+}
 
+#imagenProducto {
+    width: 100%;
+    max-width: 90px;
+    height: 100%;
+    max-height: 90px;
+    padding: 10px;
+}
+
+#imagenProducto:hover {
+    -moz-transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    -o-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    transform: scale(1.2);
+    -webkit-transition: all 0.2s 0s ease-in-out;
+    -moz-transition: all 0.2s 0s ease-in-out;
+    -o-transition: all 0.2s 0s ease-in-out;
+    transition: all 0.2s 0s ease-in-out;
+}
+
+.precioProducto {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    font-size: larger;
+    color: #8A8282;
+}
+
+.precioProductoMoneda {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin-right: 10px;
+    margin-bottom: 35px;
+    font-size: small;
+    color: #E9DAC1;
 }
 
 #cajaProducto:hover {
-    -webkit-box-shadow: 1px 1px 8px 1px rgb(103, 97, 97);
-    -moz-box-shadow: 1px 1px 8px 1px rgb(103, 97, 97);
-    box-shadow: 1px 1px 8px 1px rgb(103, 97, 97);
-    box-shadow: 1px 1px 8px 1px rgb(103, 97, 97);
-    -webkit-transition: all 0.4s 0s ease-in-out;
-    -moz-transition: all 0.4s 0s ease-in-out;
-    -o-transition: all 0.4s 0s ease-in-out;
-    transition: all 0.4s 0s ease-in-out;
+    -webkit-box-shadow: 0px 0px 3px 1px #8A8282;
+    box-shadow: 0px 0px 3px 1px #8A8282;
+    -webkit-transition: all 0.1s 0s linear;
+    -moz-transition: all 0.1s 0s linear;
+    -o-transition: all 0.1s 0s linear;
+    transition: all 0.1s 0s linear;
 }
 
 #categoria:hover {
@@ -113,6 +172,23 @@
     .fotoProducto {
         border-bottom: 0.5px solid #8A8282;
         margin-bottom: 20px;
+    }
+
+
+    .llegaGratisMañana {
+
+        background-color: #FBF8F1;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        padding: 10px;
+        margin-left: 5%;
+        margin-bottom: 14px;
+        font-size: 12px;
+        height: 20px;
+        border: 1px solid #F7ECDE;
+        display: flex;
+        align-items: center;
     }
 
 }

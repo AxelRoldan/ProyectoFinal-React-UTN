@@ -10,6 +10,7 @@ function MostrarProducto() {
     const [producto, setProducto] = useState(null)
     const [cantidadProducto, setCantidadProducto] = useState(1)
     let contador = 0;
+    let estadoProducto = "NUEVO"
 
     useEffect(() => {
         fetch(`https://api.mercadolibre.com/items/${consulta}`)
@@ -18,6 +19,8 @@ function MostrarProducto() {
     }, [setProducto, consulta])
 
     if (!producto) return 0
+
+    producto.condition !== "new"? estadoProducto = "Usado" : estadoProducto = "Nuevo" 
 
     return (
         <>
@@ -29,12 +32,12 @@ function MostrarProducto() {
                             producto.pictures.map(imagen => {
                                 return (
                                     <>
-                                        <Col id="cajaImagenProducto" className="d-flex justify-content-center">
+                                        <Col id="cajaImagenProducto" className="d-flex justify-content-center align-items-center">
                                             <Image
                                                 fluid
                                                 rounded
                                                 src={imagen.url}
-                                                id="imagenProducto"
+                                                id="imagenProductoColumna"
                                                 onMouseEnter={e => setTimeout(() => document.getElementById("imagenProductoPrincipal").src = e.target.src, 200)}
                                             >
                                             </Image>
@@ -68,30 +71,30 @@ function MostrarProducto() {
                     <Col md={6} className="d-flex align-items-center justify-content-center" id="imagenColumnaPrincipal">
                         <Image src={producto.pictures[0].url} fluid id="imagenProductoPrincipal"></Image>
                     </Col>
-                    <Col md={4} className="d-flex justify-content-center" id="columnaDescripcion">
-                        <Row className="flex-column justify-content-center">
-                            <Col >
-                                {producto.condition} | {producto.sold_quantity} vendidos
+                    <Col md={4}>
+                        <Row className="flex-column" id="columnaDescripcion">
+                            <Col className="descripcionVendidos">
+                                {estadoProducto} | {producto.sold_quantity} vendidos
                             </Col>
-                            <Col >
+                            <Col className="tituloProducto">
                                 {producto.title}
                             </Col>
-                            <Col >
+                            <Col className="precio">
                                 $ {producto.price}
                             </Col>
-                            <Col >
-                                Agregar cantidad
+                            <Col id="cantidad" >
+                                CANTIDAD
                             </Col>
-                            <Col className="d-flex justify-content-between">
-                                <Button onClick={() => setCantidadProducto(prevState => prevState > 1 ? prevState - 1 : prevState)}> - </Button>
-                                <div> {cantidadProducto}</div>
-                                <Button onClick={() => setCantidadProducto(prevState => prevState < producto.available_quantity ? prevState + 1 : prevState)}> + </Button>
+                            <Col className="d-flex justify-content-between align-items-center" id="columnaBoton">
+                                <Button id="botonMas" onClick={() => setCantidadProducto(prevState => prevState > 1 ? prevState - 1 : prevState)}><Image src={"https://i.ibb.co/nCrhCrw/signo-Menos.png"} id="signoMas"></Image></Button>
+                                <div className="numeroCantidad"> {cantidadProducto}</div>
+                                <Button id="botonMenos" onClick={() => setCantidadProducto(prevState => prevState < producto.available_quantity ? prevState + 1 : prevState)}><Image src={"https://i.ibb.co/vZFvbWP/signoMas.png"} id="signoMas"></Image></Button>
                             </Col >
-                            <Col>
+                            <Col className="stockDisponible">
                                 Stock disponible {producto.available_quantity}
                             </Col>
-                            <Col>
-                                <Button>Agregar al carrito</Button>
+                            <Col className="d-flex justify-content-center">
+                                <Button id="agregarAlCarrito">Agregar al carrito</Button>
                             </Col>
                         </Row>
                     </Col>

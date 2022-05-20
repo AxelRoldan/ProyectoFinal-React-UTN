@@ -14,10 +14,10 @@ export default function Producto() {
 
     fetch(`https://api.mercadolibre.com/sites/MLA/search?status=active&limit=20&q=${consulta}`)
       .then(arrayConsulta => arrayConsulta.json())
-      .then(arrayConsulta => {setResultadoConsulta(arrayConsulta)})
+      .then(arrayConsulta => { setResultadoConsulta(arrayConsulta) })
   }, [setResultadoConsulta, consulta])
 
-  if(!resultadoConsulta) return 0
+  if (!resultadoConsulta) return 0
 
   return (
     <>
@@ -28,11 +28,14 @@ export default function Producto() {
             return (
               <>
                 <Card as={Link} to={`/Producto/${producto.id}`} className="flex-sm-row " id="cajaProducto">
-                  <Col className="d-flex  align-items-center justify-content-center fotoProducto" sm={{ span: 2, offset: 0 }} style={{height: "150px"}}>
-                    <Card.Img src={producto.thumbnail} style={{ width: "100%", maxWidth: "80px", minWidth: "40px", height: "120px" }}></Card.Img>
+                  <Col className="d-flex  align-items-center justify-content-center py-4 fotoProducto" sm={{ span: 2, offset: 0 }}>
+                    <Card.Img src={producto.thumbnail} id="imagenProducto"></Card.Img>
                   </Col>
-                  <Col sm={{ span: 10, offset: 0 }} className="d-flex align-items-center justify-content-center">
-                    <Card.Title> {producto.title} </Card.Title>
+                  <Col sm={{ span: 10, offset: 0 }} id="columnaTarjeta" className="d-flex align-items-center justify-content-center px-4">
+                    <Card.Title style={{color: "#8A8282"}}> {producto.title} </Card.Title>
+                    <p className="precioProductoMoneda">{producto.currency_id}</p>
+                    <p className="llegaGratisMañana">Llega gratis gañana</p>
+                    <p className="precioProducto">$ {producto.price}</p>
                   </Col>
                 </Card>
               </>

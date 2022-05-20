@@ -21,6 +21,8 @@ export default function Productos() {
 
   if (!productosSubCategoria) return 0
 
+  console.log(productosSubCategoria)
+
   return (
     <>
       <Navegacion />
@@ -30,11 +32,14 @@ export default function Productos() {
             return (
               <>
                 <Card as={Link} to={`/Producto/${producto.id}`} className="flex-sm-row" id="cajaProducto">
-                  <Col className="d-flex justify-content-center fotoProducto" sm={{ span: 2, offset: 0 }}>
-                    <Card.Img src={producto.thumbnail} style={{ width: "100%", maxWidth: "120px", minWidth: "100px", height: "150px" }}></Card.Img>
+                  <Col className="d-flex justify-content-center align-items-center fotoProducto" sm={{ span: 2, offset: 0 }}>
+                    <Card.Img src={producto.thumbnail} id="imagenProducto"></Card.Img>
                   </Col>
-                  <Col sm={{ span: 10, offset: 0 }} className="d-flex align-items-center justify-content-center">
-                    <Card.Title> {producto.title} </Card.Title>
+                  <Col sm={{ span: 10, offset: 0 }} id="columnaTarjeta"className="d-flex align-items-sm-center justify-content-center px-4">
+                    <Card.Title style={{color: "#8A8282"}}> {producto.title} </Card.Title>
+                  <p className="precioProductoMoneda">{producto.currency_id}</p>
+                  <p className="llegaGratisMañana">Llega gratis gañana</p>
+                  <p className="precioProducto">$ {producto.price}</p>
                   </Col>
                 </Card>
               </>
