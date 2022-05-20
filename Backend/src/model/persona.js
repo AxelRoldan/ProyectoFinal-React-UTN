@@ -1,27 +1,39 @@
 import mongoose from 'mongoose'
-import fetch from 'node-fetch'
+
+const personaSchema = mongoose.Schema( {
+    objetoMeli: Object,
+    usuario: String
+})
+
+const MeliObjeto = mongoose.model('objetofinal', personaSchema);
 
 async function crearPersona(nombreDeLaPersona) {
 
-    let objetoMeli = await fetch('https://api.mercadolibre.com/items/MLA1118437081?include_attributes=all')
-    let respuestaObjMeli = await objetoMeli.json()
-
-    const MeliObjeto = mongoose.model('ObjetoMeliYPersona', { 
-        objetoMeli: Object,
-        name:  String,
-        surname: String,
-        dni: String
-    });
-
-    const kitty = new MeliObjeto({ 
-        objetoMeli: respuestaObjMeli,
-        name: nombreDeLaPersona.nombre,
-        surname: nombreDeLaPersona.apellido,
-        dni: nombreDeLaPersona.dni
+    const kitty = new MeliObjeto({
+        objetoMeli: nombreDeLaPersona.producto,
+        usuario: nombreDeLaPersona.nombre
     });
     kitty.save().then(() => console.log('meow'));
 
-    return 1
+    return kitty
 }
 
-export default crearPersona
+async function traerCompra(userEmail) {
+
+    let listaCompras = await MeliObjeto.find({usuario: userEmail})
+    console.log(listaCompras)
+    return listaCompras
+}
+
+async function borrarCompra(userEmail) {
+
+    let listaCompras = await MeliObjeto.remove({usuario: userEmail})
+    console.log(listaCompras)
+    return listaCompras
+}
+
+export default {
+    crearPersona,
+    traerCompra,
+    borrarCompra
+}

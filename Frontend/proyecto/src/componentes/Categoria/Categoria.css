@@ -106,6 +106,14 @@
     padding: 10px;
 }
 
+#imagenProductoCarrito {
+    width: auto;
+    max-width: 90px;
+    height: auto;
+    max-height: 90px;
+    padding: 10px;
+}
+
 #imagenProducto:hover {
     -moz-transform: scale(1.2);
     -webkit-transform: scale(1.2);

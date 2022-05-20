@@ -1,6 +1,8 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
-import { Container, Row, Col, Image, Carousel, Card } from 'react-bootstrap'
+import { Container, Row, Col, Image, Carousel, Card, Button } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
+import TempleteCarga from '../TempleteCarga'
 import './Main.css'
 
 export default function Main() {
@@ -8,8 +10,8 @@ export default function Main() {
   const [componentes, setComponentes] = useState(null)
   const [heladeras, setHeladeras] = useState(null)
   const [motos, setMotos] = useState(null)
-  let mayor="<"
-  let menor=">"
+  let mayor = "<"
+  let menor = ">"
 
   useEffect(() => {
 
@@ -40,24 +42,32 @@ export default function Main() {
 
   }, [setComponentes, setHeladeras, setMotos])
 
-  if (!componentes) return 0
-  if (!heladeras) return 0
-  if (!motos) return 0
+  if (!componentes) return <Container id="containerMostrarProducto"  style={{height:"700px"}}></Container>
+  if (!heladeras) return <Container id="containerMostrarProducto"  style={{height:"700px"}}></Container>
+  if (!motos) return <Container id="containerMostrarProducto"  style={{height:"700px"}}></Container>
 
   return (
     <>
-      <Container id="containerMostrarProducto">
+      <Container id="containerMostrarProducto" style={{height:"700px"}}>
         <Row className="justify-content-evenly pt-5">
           <Col sm={3} className="columnaCarrousel" >
+            <h2 className="titulosProducto">Musica y accesorios</h2>
             <Carousel interval={null} indicators={false} prevIcon={<span className="carousel-control-prev-icon signoMayor" />} nextIcon={<span className="carousel-control-next-icon signoMayor" />}>
               {
-                heladeras.map(heladera => {
+                motos.map(moto => {
                   return (
                     <Carousel.Item >
                       <Col className="d-flex flex-wrap justify-content-center">
-                        <Image  className="imagenCarrousel" src={heladera.body.pictures[0].url}></Image>
-                        <p>{heladera.body.title}</p>
-                        </Col>
+                        <Card style={{ width: '18rem', height: "400px" }} className="align-items-center">
+                          <Card.Img variant="top" src={moto.body.pictures[0].url} className="imagenCarrousel" style={{width:"auto"}}/>
+                          <Card.Body className="d-flex justify-content-end flex-column">
+                            <Card.Title>
+                              <p>{moto.body.title}</p>
+                            </Card.Title>
+                            <Button as={Link} to={`/Producto/${moto.body.id}`} variant="primary" id="agregarAlCarrito">Ir al producto</Button>
+                          </Card.Body>
+                        </Card>
+                      </Col>
                     </Carousel.Item>
                   )
                 })
@@ -65,15 +75,23 @@ export default function Main() {
             </Carousel>
           </Col>
           <Col sm={3} className="columnaCarrousel">
-          <Carousel interval={null} indicators={false} prevIcon={<span className="carousel-control-prev-icon signoMayor" />} nextIcon={<span className="carousel-control-next-icon signoMayor" />}>
+          <h2 className="titulosProducto">Celulares y smartphones</h2>
+            <Carousel interval={null} indicators={false} prevIcon={<span className="carousel-control-prev-icon signoMayor" />} nextIcon={<span className="carousel-control-next-icon signoMayor" />}>
               {
-                componentes.map(componente => {
+                heladeras.map(heladera => {
                   return (
                     <Carousel.Item >
                       <Col className="d-flex flex-wrap justify-content-center">
-                        <Image  className="imagenCarrousel" src={componente.body.pictures[0].url}></Image>
-                        <p>{componente.body.title}</p>
-                        </Col>
+                        <Card style={{ width: '18rem', height: "400px" }} className="align-items-center">
+                          <Card.Img variant="top" src={heladera.body.pictures[0].url} className="imagenCarrousel" style={{width:"auto"}}/>
+                          <Card.Body className="d-flex justify-content-end flex-column">
+                            <Card.Title>
+                              <p>{heladera.body.title}</p>
+                            </Card.Title>
+                            <Button as={Link} to={`/Producto/${heladera.body.id}`} variant="primary" id="agregarAlCarrito">Ir al producto</Button>
+                          </Card.Body>
+                        </Card>
+                      </Col>
                     </Carousel.Item>
                   )
                 })
@@ -81,20 +99,33 @@ export default function Main() {
             </Carousel>
           </Col>
           <Col sm={3} className="columnaCarrousel" >
-          <Carousel interval={null} indicators={false} prevIcon={<span className="carousel-control-prev-icon signoMayor" />} nextIcon={<span className="carousel-control-next-icon signoMayor" />}>
+          <h2 className="titulosProducto">Celulares y smartphones</h2>
+            <Carousel interval={null} indicators={false} prevIcon={<span className="carousel-control-prev-icon signoMayor" />} nextIcon={<span className="carousel-control-next-icon signoMayor" />}>
               {
-                motos.map(moto => {
+                componentes.map(componente => {
                   return (
                     <Carousel.Item >
-                        <Col className="d-flex">
-                        <Image  className="imagenCarrousel" src={moto.body.pictures[0].url}></Image>
-                        <p>{moto.body.title}</p>
-                        </Col>
+                      <Col className="d-flex flex-wrap justify-content-center">
+                        <Card style={{ width: '18rem', height: "400px" }} className="align-items-center">
+                          <Card.Img variant="top" src={componente.body.pictures[0].url} className="imagenCarrousel" style={{width:"auto"}}/>
+                          <Card.Body className="d-flex justify-content-end flex-column">
+                            <Card.Title>
+                              <p>{componente.body.title}</p>
+                            </Card.Title>
+                            <Button as={Link} to={`/Producto/${componente.body.id}`} variant="primary" id="agregarAlCarrito">Ir al producto</Button>
+                          </Card.Body>
+                        </Card>
+                      </Col>
                     </Carousel.Item>
                   )
                 })
               }
             </Carousel>
+          </Col>
+        </Row>
+        <Row>
+          <Col xl={12} className="d-flex justify-content-center">
+          <Image id="imagenOferta"src={"https://i.ibb.co/SR8hLn6/BLACKFRIDAY.png"} ></Image>
           </Col>
         </Row>
       </Container>

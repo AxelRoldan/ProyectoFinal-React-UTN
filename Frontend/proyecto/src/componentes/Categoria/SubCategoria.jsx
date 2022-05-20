@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { Card, Container, Row, Col } from 'react-bootstrap'
 import './Categoria.css'
+import TempleteCarga from '../TempleteCarga'
 
 export default function Productos() {
 
@@ -19,7 +20,7 @@ export default function Productos() {
 
   }, [setProductosSubCategoria, subCategoria])
 
-  if (!productosSubCategoria) return 0
+  if (!productosSubCategoria) return <TempleteCarga />
 
   console.log(productosSubCategoria)
 

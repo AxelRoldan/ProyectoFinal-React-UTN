@@ -6,6 +6,9 @@ import SubCategoria from './componentes/Categoria/SubCategoria';
 import MostrarProducto from './componentes/Producto/MostrarProducto';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import MiCarrito from './componentes/Carrito/MiCarrito';
+import CompraExitosa from './componentes/Carrito/CompraExitosa';
+
 
 function App() {
 
@@ -17,6 +20,8 @@ function App() {
         <Route path='/SubCategoria/Productos/:id' element={<SubCategoria />} />
         <Route path='/BuscarProducto/:id' element={<ConsultaProducto />} />
         <Route path='/Producto/:id' element={<MostrarProducto />} />
+        <Route path='/MiCarrito' element={<MiCarrito/>} />
+        <Route path='/CompraExitosa' element={<CompraExitosa/>} />
       </Routes>
     </BrowserRouter>
 

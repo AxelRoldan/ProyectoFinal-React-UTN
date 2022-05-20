@@ -12,3 +12,9 @@
   -webkit-box-shadow: inset 0px 0px 16px 3px #54BAB9;
   box-shadow: inset 0px 0px 16px 3px #54BAB9;
 }
+
+#botonLogin{
+  background-color: #54BAB9;
+  border: #54BAB9;
+  border-radius: 25px;
+}

@@ -1,7 +1,6 @@
 .columnaCarrousel{
     width: 300px;
-    height: 300px;
-    border: 1px solid #C3C0C0;
+    height: 100%;
     margin-top: 20px;
     margin-bottom: 20px;
 }
@@ -12,6 +11,24 @@
     height: auto;
     max-height: 200px;
 
+}
+
+.titulosProducto{
+
+    text-align: center;
+    width: 100%;
+    font-size: large;
+    color: #8d8475;
+}
+
+#imagenOferta{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: auto;
+    min-width: 200px;
+    max-width: 900px;
+    height: auto;
+    max-height: 200px;
 }
 
 .signoMayor{
@@ -28,7 +45,6 @@
 #columnaTitulo{
     height: auto;
     max-height: 200px;
-    border: 1px solid black
 }
 
 

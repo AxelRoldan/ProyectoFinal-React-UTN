@@ -17,7 +17,7 @@ app.get('/', (req, res) => {
     res.json({valor: "todo bien"})
 })
 
-app.use("/api/agregarUsuario", routerPersona.router)
+app.use("/api/datosPersona", routerPersona.router)
 
 app.listen(PORT, () => {
     console.log(`Example app listening on port ${PORT}`)

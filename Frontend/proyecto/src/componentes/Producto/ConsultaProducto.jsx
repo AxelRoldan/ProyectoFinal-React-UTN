@@ -4,6 +4,7 @@ import Footer from '../Footer/Footer'
 import { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { Card, Container, Row, Col } from 'react-bootstrap'
+import TempleteCarga from '../TempleteCarga'
 
 export default function Producto() {
 
@@ -17,7 +18,7 @@ export default function Producto() {
       .then(arrayConsulta => { setResultadoConsulta(arrayConsulta) })
   }, [setResultadoConsulta, consulta])
 
-  if (!resultadoConsulta) return 0
+  if (!resultadoConsulta) return <TempleteCarga />
 
   return (
     <>

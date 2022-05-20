@@ -1,0 +1,7 @@
+#footer {
+    background-color: #54BAB9;
+    -webkit-box-shadow: 0px -5px 9px -3px #54BAB9;
+    box-shadow: 0px -5px 9px -3px #54BAB9;
+    height: 100%;
+    z-index: 100; 
+}

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Container, Navbar, Nav, NavDropdown, Row, Col, NavLink } from 'react-bootstrap'
 import { Link } from "react-router-dom"
 import Footer from '../Footer/Footer'
+import TempleteCarga from '../TempleteCarga'
 import './Categoria.css'
 
 export default function TraerCategorias() {
@@ -28,7 +29,7 @@ export default function TraerCategorias() {
             .then(subCategorias => setSubCategorias(subCategorias))
     }
 
-    if (!categorias) return 0
+    if (!categorias) return <TempleteCarga />
 
     return (
         <Row className="flex-nowrap" onMouseLeave={() => setSubCategorias(null)} >

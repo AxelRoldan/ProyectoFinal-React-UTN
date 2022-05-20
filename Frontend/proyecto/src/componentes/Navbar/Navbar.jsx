@@ -4,8 +4,14 @@ import { Link } from 'react-router-dom'
 import './Navbar.css'
 import TraerCategorias from '../Categoria/TraerCategorias'
 import BuscarProducto from '../Producto/BuscarProducto'
+import Login from '../Login/Login'
+import Logout from '../Login/Logout'
+import Profile from '../Login/Profile'
+import { useAuth0 } from '@auth0/auth0-react'
 
 const Navegacion = () => {
+
+    const { isAuthenticated } = useAuth0()
 
     return (
         <Navbar expand="lg" id="navbar" >
@@ -15,10 +21,22 @@ const Navegacion = () => {
                 <Navbar.Collapse id="basic-navbar-nav" >
                     <Nav className="me-auto" >
                         <Nav.Link as={Link} to={"/"}>Home</Nav.Link>
-                        <Nav.Link as={Link} to={"/"}>Mi Carrito</Nav.Link>
+                        <Nav.Link as={Link} to={"/MiCarrito"}>Mi Carrito</Nav.Link>
                         <NavDropdown title="Categorias" id="basic-nav-dropdown">
                             <TraerCategorias />
                         </NavDropdown>
+                        {  isAuthenticated?(
+                          <>
+                            <Logout />
+                            <Profile />
+                          </>
+                        )
+                        :
+                        (
+                            <Login />
+                        )
+                            
+                            }
                     </Nav>
                     <BuscarProducto />
                 </Navbar.Collapse>

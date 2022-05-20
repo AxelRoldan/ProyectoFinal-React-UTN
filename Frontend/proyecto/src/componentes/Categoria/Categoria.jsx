@@ -4,6 +4,7 @@ import Footer from '../Footer/Footer'
 import { Link, useParams } from 'react-router-dom'
 import { Container, Image, Row, Col } from 'react-bootstrap'
 import TraerCategorias from './TraerCategorias'
+import TempleteCarga from '../TempleteCarga'
 
 export default function Categoria() {
 
@@ -19,7 +20,7 @@ export default function Categoria() {
       })
   }, [setCategoria, id])
 
-  if (!categoria) return "hola"
+  if (!categoria) return <TempleteCarga />
 
   return (
     <>

@@ -1,16 +1,44 @@
 import React, { useState, useEffect } from 'react'
 import { Container, Row, Col, Image, Button, Carousel } from 'react-bootstrap'
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
+import Footer from '../Footer/Footer'
 import Navegacion from '../Navbar/Navbar'
+import { useAuth0 } from '@auth0/auth0-react'
 import './Buscador.css'
+import TempleteCarga from '../TempleteCarga'
 
 function MostrarProducto() {
 
     const { id: consulta } = useParams()
     const [producto, setProducto] = useState(null)
     const [cantidadProducto, setCantidadProducto] = useState(1)
+    const { isAuthenticated, loginWithRedirect, user } = useAuth0()
     let contador = 0;
     let estadoProducto = "NUEVO"
+
+    const manejarEvento = () => {
+
+        if (!isAuthenticated) {
+            loginWithRedirect()
+        }
+
+        let compraPersona = {
+
+            nombre: user.email,
+            producto: {
+            precioProducto: producto.price,
+            imagenProducto: producto.pictures[0].url,
+            cantidadProducto: cantidadProducto,
+            tituloProducto: producto.title}
+        }
+
+        fetch("http://localhost:8080/api/datosPersona", {
+            method: "POST",
+            body: JSON.stringify(compraPersona)
+        })
+            .then(persona => persona.json())
+            .then(persona => console.log(persona))
+    }
 
     useEffect(() => {
         fetch(`https://api.mercadolibre.com/items/${consulta}`)
@@ -18,9 +46,9 @@ function MostrarProducto() {
             .then(producto => setProducto(producto))
     }, [setProducto, consulta])
 
-    if (!producto) return 0
+    if (!producto) return <TempleteCarga />
 
-    producto.condition !== "new"? estadoProducto = "Usado" : estadoProducto = "Nuevo" 
+    producto.condition !== "new" ? estadoProducto = "Usado" : estadoProducto = "Nuevo"
 
     return (
         <>
@@ -94,13 +122,13 @@ function MostrarProducto() {
                                 Stock disponible {producto.available_quantity}
                             </Col>
                             <Col className="d-flex justify-content-center">
-                                <Button id="agregarAlCarrito">Agregar al carrito</Button>
+                                <Button as={Link} to={"/MiCarrito"} id="agregarAlCarrito" onClick={() => manejarEvento()}>Agregar al carrito</Button>
                             </Col>
                         </Row>
                     </Col>
                 </Row>
                 <Row className="producto align-content-center" style={{ width: "80%" }}>
-                    <h2 style={{textAlign:"center"}}>CARACTERISTICAS</h2>
+                    <h2 style={{ textAlign: "center" }}>CARACTERISTICAS</h2>
                     {
                         producto.attributes.map(atributos => {
                             contador++
@@ -108,10 +136,10 @@ function MostrarProducto() {
                                 if (atributos.name && atributos.value_name) {
                                     return (
                                         <>
-                                            <Col sm={{span:3, offset:1}} className="nombreCaracteristicas">
+                                            <Col sm={{ span: 3, offset: 1 }} className="nombreCaracteristicas">
                                                 {atributos.name}
                                             </Col>
-                                            <Col sm={{span:7}} className="valorCaracteristicas">
+                                            <Col sm={{ span: 7 }} className="valorCaracteristicas">
                                                 {atributos.value_name}
                                             </Col>
                                         </>
@@ -122,6 +150,7 @@ function MostrarProducto() {
                     }
                 </Row>
             </Container>
+            <Footer />
         </>
     )
 }

@@ -1,9 +1,11 @@
 import  express  from "express";
-import crearPersona from "../controller/persona.js";
+import controller from "../controller/persona.js";
 
 const router = express.Router()
 
-router.post('/', crearPersona)
+router.post('/', controller.recibirPersona)
+router.get('/:id', controller.traerCompra)
+router.delete('/:id', controller.eliminarCompra)
 
 export default {
     router
