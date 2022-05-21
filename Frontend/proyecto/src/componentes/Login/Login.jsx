@@ -7,9 +7,11 @@ const Login = () => {
 
     const { loginWithRedirect } = useAuth0()
 
+    //Boton que redirige para cargar el usuario
+
   return (
       <>
-    <Button id="botonLogin" onClick={() => loginWithRedirect()}>
+    <Button id="botonLogin" onClick={() => loginWithRedirect()}> 
         Login
     </Button>
     </>

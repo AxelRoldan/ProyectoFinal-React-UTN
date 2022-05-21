@@ -1,6 +1,7 @@
 import React from 'react'
 import { Container, Navbar, Nav, NavDropdown, Image } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import { useState, useEffect } from 'react'
 import './Navbar.css'
 import TraerCategorias from '../Categoria/TraerCategorias'
 import BuscarProducto from '../Producto/BuscarProducto'
@@ -11,7 +12,7 @@ import { useAuth0 } from '@auth0/auth0-react'
 
 const Navegacion = () => {
 
-    const { isAuthenticated } = useAuth0()
+    const { isAuthenticated } = useAuth0() //extraemos variable boolean para saber si el usuario esta logeado o no
 
     return (
         <Navbar expand="lg" id="navbar" >
@@ -25,10 +26,9 @@ const Navegacion = () => {
                         <NavDropdown title="Categorias" id="basic-nav-dropdown">
                             <TraerCategorias />
                         </NavDropdown>
-                        {  isAuthenticated?(
+                        {  isAuthenticated?(    //IF que habilita botones en caso de que el usuario este logeado o no
                           <>
                             <Logout />
-                            <Profile />
                           </>
                         )
                         :

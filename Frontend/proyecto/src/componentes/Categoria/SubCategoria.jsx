@@ -14,15 +14,13 @@ export default function Productos() {
 
   useEffect(() => {
 
-    fetch(`https://api.mercadolibre.com/sites/MLA/search?category=${subCategoria}`)
+    fetch(`https://api.mercadolibre.com/sites/MLA/search?category=${subCategoria}`) //Traigo todos los productos de una categoria
       .then(productos => productos.json())
       .then(productos => setProductosSubCategoria(productos))
 
   }, [setProductosSubCategoria, subCategoria])
 
   if (!productosSubCategoria) return <TempleteCarga />
-
-  console.log(productosSubCategoria)
 
   return (
     <>

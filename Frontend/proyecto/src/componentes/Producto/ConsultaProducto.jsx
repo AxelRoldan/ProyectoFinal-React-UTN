@@ -13,7 +13,7 @@ export default function Producto() {
 
   useEffect(() => {
 
-    fetch(`https://api.mercadolibre.com/sites/MLA/search?status=active&limit=20&q=${consulta}`)
+    fetch(`https://api.mercadolibre.com/sites/MLA/search?status=active&limit=20&q=${consulta}`) // Consulta realizada con el buscador
       .then(arrayConsulta => arrayConsulta.json())
       .then(arrayConsulta => { setResultadoConsulta(arrayConsulta) })
   }, [setResultadoConsulta, consulta])

@@ -6,7 +6,7 @@ import "./Login.css"
 function Profile() {
 
     const { isAuthenticated, user, isLoading } = useAuth0()
-
+  //Perfil sin uso
   return (
     isAuthenticated && (
         <div>

@@ -13,6 +13,7 @@ export default function Main() {
   let mayor = "<"
   let menor = ">"
 
+  //Varias peticiones poco eficaces pero hechas con el proposito de acceder a imagenes de buena calidad para poder renderizarlas
   useEffect(() => {
 
     fetch("https://api.mercadolibre.com/sites/MLA/search?limit=10&category=MLA3794&discount=30-100")
@@ -48,7 +49,7 @@ export default function Main() {
 
   return (
     <>
-      <Container id="containerMostrarProducto" style={{height:"700px"}}>
+      <Container id="containerMostrarProducto">
         <Row className="justify-content-evenly pt-5">
           <Col sm={3} className="columnaCarrousel" >
             <h2 className="titulosProducto">Musica y accesorios</h2>

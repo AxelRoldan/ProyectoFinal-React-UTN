@@ -10,21 +10,19 @@ import './MiCarrito.css'
 function MiCarrito() {
 
     const { user, isAuthenticated, loginWithRedirect } = useAuth0()
-
-    if (!isAuthenticated) {
-        loginWithRedirect()
-    }
-    
-
     const [listaCompras, setListasCompras] = useState(null)
 
-    useEffect(() => {
+    if (!isAuthenticated) { //pregunto si el usuario esta logeado, en caso de que no, lo redirijo
+        loginWithRedirect()
+    }
+
+    useEffect(() => {   //peticion GET que trae las compras realizada por la persona, filtra por email
         fetch(`http://localhost:8080/api/datosPersona/${user.email}`)
             .then(compras => compras.json())
             .then(compras => setListasCompras(compras))
     }, [setListasCompras])
 
-    const eliminarCompra = () => {
+    const eliminarCompra = () => {  //Elimina las compras con metodo delete
 
         fetch(`http://localhost:8080/api/datosPersona/${user.email}`,{
             method: "delete"
@@ -35,13 +33,13 @@ function MiCarrito() {
 
     if (!listaCompras) return 0
 
-    let traerTotales = listaCompras.valor.map(producto => {
+    let total = 0
+
+    let traerTotales = listaCompras.valor.map(producto => { //Extraigo los totales de los productos
         return (producto.objetoMeli.precioProducto * producto.objetoMeli.cantidadProducto)
     })
 
-    let total = 0
-
-    for(let i=0 ; i< traerTotales.length; i++){
+    for(let i=0 ; i< traerTotales.length; i++){ //los añado a la variable total y lo renderizo
         total += traerTotales[i]
     }
 

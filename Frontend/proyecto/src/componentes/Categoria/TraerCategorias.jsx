@@ -19,8 +19,8 @@ export default function TraerCategorias() {
     }, [setCategorias, setSubCategorias])
 
 
-    const habilitarSubMenu = (e) => {
-
+    const habilitarSubMenu = (e) => {   //Funcion que se activa al hacer hover sobre una categoria principal
+                                        //Luego trae el elemento que recibio el hover y realiza una consulta en base a eso
         document.getElementById("subCategoria").classList.remove("cajaSubMenu")
         let idSubCategoria = e.target.parentNode.firstChild.textContent
 
@@ -30,6 +30,8 @@ export default function TraerCategorias() {
     }
 
     if (!categorias) return <TempleteCarga />
+
+    //Hay un div hidden con la categoriaID de una categoria para traerda con la api de document
 
     return (
         <Row className="flex-nowrap" onMouseLeave={() => setSubCategorias(null)} >

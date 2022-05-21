@@ -1,7 +1,7 @@
 import React from 'react';
 import "./Footer.css"
 
-function Footer() {
+function Footer() { //Footer templeate descargado de internet
   return (
     <>
     <footer className="page-footer font-small blue">
@@ -29,7 +29,7 @@ function Footer() {
                 <h5 className="text-uppercase">API </h5>
                 <ul className="list-unstyled">
                     <li><a href="https://developers.mercadolibre.com.ar/buscador-de-productos" target={"_blank"} style={{textDecoration:"none"}}>MercadoLibre</a></li>
-
+                    <li><a href="https://auth0.com/es" target={"_blank"} style={{textDecoration:"none"}}>Auth0</a></li>
                 </ul>
             </div>
         </div>

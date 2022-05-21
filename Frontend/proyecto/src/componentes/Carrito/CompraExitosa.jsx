@@ -1,11 +1,11 @@
 import React from 'react'
 import Navegacion from '../Navbar/Navbar'
 import Footer from '../Footer/Footer'
-import { Container, Row, Col, Card, Button } from 'react-bootstrap'
+import { Container, Row, Col, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import './MiCarrito.css'
 
-function CompraExitosa() {
+function CompraExitosa() { //Renderizo en caso de que la compra haya sido exitosa
   return (
     <>
         <Navegacion />

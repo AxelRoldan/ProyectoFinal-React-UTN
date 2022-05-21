@@ -22,8 +22,7 @@ function MostrarProducto() {
             loginWithRedirect()
         }
 
-        let compraPersona = {
-
+        let compraPersona = {   //Datos que van a ser guardados en la base de datos para cargar luego en el carrito de compras
             nombre: user.email,
             producto: {
             precioProducto: producto.price,
@@ -32,7 +31,7 @@ function MostrarProducto() {
             tituloProducto: producto.title}
         }
 
-        fetch("http://localhost:8080/api/datosPersona", {
+        fetch("http://localhost:8080/api/datosPersona", { //Peticion realizada de forma local
             method: "POST",
             body: JSON.stringify(compraPersona)
         })
@@ -41,14 +40,14 @@ function MostrarProducto() {
     }
 
     useEffect(() => {
-        fetch(`https://api.mercadolibre.com/items/${consulta}`)
+        fetch(`https://api.mercadolibre.com/items/${consulta}`) //Producto especifico que se renderiza en la consulta de un solo producto
             .then(producto => producto.json())
             .then(producto => setProducto(producto))
     }, [setProducto, consulta])
 
     if (!producto) return <TempleteCarga />
 
-    producto.condition !== "new" ? estadoProducto = "Usado" : estadoProducto = "Nuevo"
+    producto.condition !== "new" ? estadoProducto = "Usado" : estadoProducto = "Nuevo" //Renderizamos palabra en español en caso de que el producto sea nuevo o usado
 
     return (
         <>

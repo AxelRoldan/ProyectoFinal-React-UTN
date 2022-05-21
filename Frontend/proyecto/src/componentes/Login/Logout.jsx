@@ -5,7 +5,7 @@ import "./Login.css"
 
 function Logout() {
 
-    const { logout } = useAuth0()
+    const { logout } = useAuth0() // Boton que deslogea al usuario
   return (
     <Button id="botonLogin" onClick={ () => logout()}>Logout</Button>
   )

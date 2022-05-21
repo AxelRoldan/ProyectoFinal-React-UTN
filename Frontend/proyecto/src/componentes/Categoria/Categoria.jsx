@@ -8,10 +8,10 @@ import TempleteCarga from '../TempleteCarga'
 
 export default function Categoria() {
 
-  const { id } = useParams()
-  const [categoria, setCategoria] = useState(null)
+  const { id } = useParams()  //ID de la categoria que eligio el usuario
+  const [categoria, setCategoria] = useState(null)  
 
-  useEffect(() => {
+  useEffect(() => { //Traigo las subcategorias de una categoria en especifica
     fetch(`https://api.mercadolibre.com/categories/${id}`)
       .then(categoriaElegida => categoriaElegida.json())
       .then(categoriaElegida => {
