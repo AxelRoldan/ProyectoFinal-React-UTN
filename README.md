@@ -8,7 +8,7 @@
         "express": "^4.18.1",
         "mongoose": "^6.3.3",
 
-#### Front
+#### FRONT
 
     "@auth0/auth0-react": "^1.10.1",
     "@testing-library/jest-dom": "^5.16.4",
@@ -21,3 +21,11 @@
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
+
+#### MONGODB
+
+        Tambien debe tener mongo instalado
+        en caso de usar comandos
+        usar db prueba
+        collection objetofinal
+        
